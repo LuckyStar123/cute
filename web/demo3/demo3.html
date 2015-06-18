@@ -3,33 +3,26 @@
         <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
         <title>tab</title>
         <style type="text/css">
+            .normal{
+                float: left;
+                width:160px;
+                height: 28px;
+                background: url(images/title_bg.gif);
+                text-align: center;
+            }
             .container{
             	width:484px;
             	height: 428px;
             }
             .title{
             	width: 484px;
-            	height: 30px;
-            	
+            	height: 30px;            	
             }
             .content{
             	width: 484px;
             	height: 400px;
             }
-            .title1{
-            	float: left;
-            	background:url(../images/title_bg.gif);
-            	width: 160px;
-            	height: 28px;
-            	text-align: center;
-            }
-            #title_1{
-            	margin-right: 2px;
-            	background:url(../images/title_bg2.gif);
-            }
-            #title_2{
-            	margin-right: 2px;
-            }
+
             #content_1{
             	background:purple;
             	display: block;
@@ -46,43 +39,14 @@
             	height: 400px;
             }
         </style>
-        <script type="text/javascript" src="../jquery.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-            	
-            	$("#title_1").click(function(){
-            		$("#title_1").css("background","url(../images/title_bg2.gif)");
-            		$("#title_2").css("background","url(../images/title_bg.gif)");
-            		$("#title_3").css("background","url(../images/title_bg.gif)");
-            		$("#content_1").css("display","block");
-            		$("#content_2").css("display","none");
-            		$("#content_3").css("display","none");
-            	});
-            	$("#title_2").click(function(){
-            		$("#title_1").css("background","url(../images/title_bg.gif)");
-            		$("#title_2").css("background","url(../images/title_bg2.gif)");
-            		$("#title_3").css("background","url(../images/title_bg.gif)");
-            		$("#content_1").css("display","none");
-            		$("#content_2").css("display","block");
-            		$("#content_3").css("display","none");
-            	});
-            	$("#title_3").click(function(){
-            		$("#title_1").css("background","url(../images/title_bg.gif)");
-            		$("#title_2").css("background","url(../images/title_bg.gif)");
-            		$("#title_3").css("background","url(../images/title_bg2.gif)");
-            		$("#content_1").css("display","none");
-            		$("#content_2").css("display","none");
-            		$("#content_3").css("display","block");
-            	});
-            })
-        </script>
+        <script type="text/javascript" src="jquery.js"></script>
     </head>
     <body>
     	<div class="container">
-    		<div class="title">
-    			<div id="title_1" class="title1">title1</div>
-    			<div id="title_2" class="title1">title2</div>
-    			<div id="title_3" class="title1">title3</div>
+    		<div class="title" id="title">
+    			<div id="title_1" class="normal">title1</div>
+    			<div id="title_2" class="normal">title2</div>
+    			<div id="title_3" class="normal">title3</div>
     		</div>
     		<div class="content">
     			<div id="content_1" class="content1">content1</div>
@@ -90,5 +54,21 @@
     			<div id="content_3" class="content1">content3</div>
     		</div>
     	</div>
+        <script type="text/javascript">
+            var title=document.getElementById("title"); 
+            title.onclick=function title(ev){
+                var ev=ev || window.event;
+                var target=ev.target || ev.srcElement;
+                if (target.nodeName.toLowerCase() == "div") {
+                    $(".normal").css("background","url(images/title_bg.gif)");
+                    $(target).css("background","url(images/title_bg2.gif)");
+                    var id=target.id;
+                    var i=id.substr(id.length-1,1);
+                    var content_id="content_"+i;
+                    $(".content1").css("display","none");
+                    $("#"+content_id).css("display","block");             
+                }
+            }
+        </script>
     </body>>
 </html>
