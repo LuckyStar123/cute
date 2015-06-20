@@ -2,44 +2,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
         <title>tab</title>
-        <style type="text/css">
-            .normal{
-                float: left;
-                width:160px;
-                height: 28px;
-                background: url(images/title_bg.gif);
-                text-align: center;
-            }
-            .container{
-            	width:484px;
-            	height: 428px;
-            }
-            .title{
-            	width: 484px;
-            	height: 30px;            	
-            }
-            .content{
-            	width: 484px;
-            	height: 400px;
-            }
-
-            #content_1{
-            	background:purple;
-            	display: block;
-            	height: 400px;
-            }
-            #content_2{
-            	background: yellow;
-            	display: none;
-            	height: 400px;
-            }
-            #content_3{
-            	background: pink;
-            	display: none;
-            	height: 400px;
-            }
-        </style>
-        <script type="text/javascript" src="jquery.js"></script>
+        <link href="css/default.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
     </head>
     <body>
     	<div class="container">
@@ -54,21 +18,6 @@
     			<div id="content_3" class="content1">content3</div>
     		</div>
     	</div>
-        <script type="text/javascript">
-            var title=document.getElementById("title"); 
-            title.onclick=function title(ev){
-                var ev=ev || window.event;
-                var target=ev.target || ev.srcElement;
-                if (target.nodeName.toLowerCase() == "div") {
-                    $(".normal").css("background","url(images/title_bg.gif)");
-                    $(target).css("background","url(images/title_bg2.gif)");
-                    var id=target.id;
-                    var i=id.substr(id.length-1,1);
-                    var content_id="content_"+i;
-                    $(".content1").css("display","none");
-                    $("#"+content_id).css("display","block");             
-                }
-            }
-        </script>
-    </body>>
+        <script type="text/javascript" src="js/default.js"></script>
+    </body>>        
 </html>
